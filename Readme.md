@@ -1,14 +1,22 @@
 # Image optimization for Grunt using imgo
 
-## Overview
+## Installation
 
-Inside your `grunt.js` file add a section named `imgo`. This section specifies the files to optimize and the options passed to [imgo](https://github.com/imgo/imgo). Then add
+1. Install `imgo` following [instructions](https://github.com/imgo/imgo/blob/master/README.md).
+
+2. Install `grunt-imgo`:
+
+```
+npm install grunt-imgo
+```
+
+3. Add somewhere in your `grunt.js`:
 
 ```javascript
 grunt.loadNpmTasks('grunt-imgo');
 ```
 
-somewhere in your `grunt.js`.
+4. Inside your `grunt.js` file add a section named `imgo`. See Parameters section below for details.
 
 ### Parameters
 
