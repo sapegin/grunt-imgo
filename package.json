@@ -1,0 +1,35 @@
+{
+  "name": "grunt-imgo",
+  "description": "Image optimization for Grunt using imgo.",
+  "version": "0.0.1",
+  "homepage": "https://github.com/sapegin/grunt-imgo",
+  "author": {
+    "name": "Artem Sapegin",
+    "url": "http://sapegin.me/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sapegin/grunt-imgo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sapegin/grunt-imgo/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/sapegin/grunt-imgo/blob/master/License.md"
+    }
+  ],
+  "main": "tasks/imgo.js",
+  "engines": {
+    "node": "*"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "grunt": "*"
+  },
+  "keywords": [
+    "gruntplugin"
+  ]
+}
