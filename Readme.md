@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/sapegin/grunt-imgo.png)](http://travis-ci.org/sapegin/grunt-imgo)
 # Image optimization for Grunt using imgo
 
 ## Installation
