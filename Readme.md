@@ -29,6 +29,15 @@ Images list: PNG, GIF or JPEG. String or array. Wildcards are supported.
 
 Any options you want to pass to `imgo`.
 
+#### skip `boolean`
+
+If `true` task will not be ran. In example, you can skip `imgo` on Windows (becase of difficult installation):
+
+``` javascript
+skip: require('os').platform() === 'win32'
+```
+
+
 ### Config Example
 
 ``` javascript

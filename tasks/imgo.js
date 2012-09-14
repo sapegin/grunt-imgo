@@ -13,8 +13,13 @@ module.exports = function(grunt) {
 		this.requiresConfig([ this.name, this.target, 'files' ].join('.'));
 
 		var done = this.async(),
-			params = this.data,
-			files = grunt.file.expandFiles(params.files);
+			params = this.data;
+
+		if (params.skip) {
+			done();
+		}
+
+		var files = grunt.file.expandFiles(params.files);
 		grunt.utils.async.forEach(files, function(file, nextFile) {
 			var args = [file];
 			if (params.options) {
