@@ -10,7 +10,7 @@ module.exports = function(grunt) {
 	'use strict';
 
 	grunt.registerMultiTask('imgo', 'Optimize images using imgo', function() {
-		this.requiresConfig('imgo.' + this.target + '.files');
+		this.requiresConfig([ this.name, this.target, 'files' ].join('.'));
 
 		var done = this.async(),
 			params = this.data,
@@ -51,12 +51,12 @@ module.exports = function(grunt) {
 						before: before,
 						after: before,
 						saved: saved
-					})
+					});
 				}
 				else {
 					return options.done({ compressed: false });
 				}
-			};
+			}
 
 			// Something went horribly wrong
 			grunt.verbose.or.writeln();
