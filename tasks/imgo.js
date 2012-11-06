@@ -29,8 +29,8 @@ module.exports = function(grunt) {
 				args: args,
 				done: function(data) {
 					if (!data.err && data.compressed) {
-						grunt.log.writeln("File '" + file + "': saved " + data.saved + " bytes " +
-								"(" + Math.round(data.saved/data.before*100) + "%)");
+						grunt.log.writeln("File '" + file + "': saved " + String(data.saved).green + " bytes " +
+								"(" + String(Math.round(data.saved/data.before*100)).green + "%".green + ")");
 					}
 					nextFile();
 				}
