@@ -25,7 +25,7 @@ module.exports = function(grunt) {
 			if (params.options) {
 				args.unshift(params.options);
 			}
-			grunt.helper('imgo', {
+			process({
 				args: args,
 				done: function(data) {
 					if (!data.err && data.compressed) {
@@ -40,7 +40,7 @@ module.exports = function(grunt) {
 		});
 	});
 
-	grunt.registerHelper('imgo', function(options) {
+	function process(options) {
 		return grunt.utils.spawn({
 			cmd: 'imgo',
 			args: options.args
@@ -78,5 +78,5 @@ module.exports = function(grunt) {
 			}
 			options.done({ err: code });
 		});
-	});
+	}
 };
