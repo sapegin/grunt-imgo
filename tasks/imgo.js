@@ -17,6 +17,7 @@ module.exports = function(grunt) {
 
 		if (params.skip) {
 			done();
+			return;
 		}
 
 		var files = grunt.file.expandFiles(params.files);
