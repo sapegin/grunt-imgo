@@ -22,13 +22,16 @@
   ],
   "main": "tasks/imgo.js",
   "engines": {
-    "node": "*"
+    "node": ">= 0.8.0"
   },
   "dependencies": {},
   "devDependencies": {
     "grunt": "*"
   },
   "keywords": [
-    "gruntplugin"
+    "gruntplugin",
+    "imgo",
+    "images",
+    "optimization"
   ]
 }
