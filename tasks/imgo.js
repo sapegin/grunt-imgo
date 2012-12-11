@@ -17,7 +17,7 @@ module.exports = function(grunt) {
 
 		var done = this.async();
 		var params = this.data;
-		var nl = false;
+		var nl = true;
 
 		if (params.skip) {
 			return done();
