@@ -9,56 +9,67 @@
 module.exports = function(grunt) {
 	'use strict';
 
+	var fs = require('fs');
 	var util = grunt.util || grunt.utils;  // Grunt 0.3/0.4 compatibility
 
 	grunt.registerMultiTask('imgo', 'Optimize images using imgo', function() {
 		this.requiresConfig([ this.name, this.target, 'files' ].join('.'));
 
-		var done = this.async(),
-			params = this.data;
+		var done = this.async();
+		var params = this.data;
+		var nl = false;
 
 		if (params.skip) {
-			done();
-			return;
+			return done();
 		}
 
 		var files = grunt.file.expandFiles(params.files);
-		grunt.util.async.forEach(files, function(file, nextFile) {
-			var args = [file];
-			if (params.options) {
-				args.unshift(params.options);
-			}
-			process({
-				args: args,
+		util.async.forEach(files, function(file, nextFile) {
+			optimize({
+				file: file,
+				args: params.options,
 				done: function(data) {
-					if (!data.err && data.compressed) {
-						grunt.log.writeln("File '" + file + "': saved " + String(data.saved).green + " bytes " +
-								"(" + String(Math.round(data.saved/data.before*100)).green + "%".green + ")");
+					if (!data.err) {
+						if (data.compressed) {
+							if (!nl) grunt.log.writeln();
+							grunt.log.writeln("File '" + file + "': saved " + String(data.saved).green + " bytes " +
+									"(" + String(Math.round(data.saved/data.before*100)).green + "%".green + ")");
+							nl = true;
+						}
+						else {
+							grunt.log.write('.');
+							nl = false;
+						}
 					}
 					nextFile();
 				}
 			});
 		}, function() {
+			if (!nl) grunt.log.writeln();
 			done();
 		});
 	});
 
-	function process(options) {
+	function optimize(options) {
+		var file = options.file;
+		var beforeBytes = fs.statSync(file).size;
+
+		var args = [file];
+		if (options.args) {
+			args.unshift(options.args);
+		}
 		return util.spawn({
 			cmd: 'imgo',
-			args: options.args
+			args: args
 		}, function(err, result, code) {
 			if (!err) {
-				var fields = result.split('\n')[0].split(' '),
-					before = parseInt(fields[1], 10),
-					after = parseInt(fields[3], 10),
-					saved = before - after;
-				if (!isNaN(saved) && saved > 0) {
+				var afterBytes = fs.statSync(file).size;
+				if (afterBytes < beforeBytes) {
 					return options.done({
 						compressed: true,
-						before: before,
-						after: before,
-						saved: saved
+						before: beforeBytes,
+						after: beforeBytes,
+						saved: beforeBytes - afterBytes
 					});
 				}
 				else {
@@ -68,11 +79,8 @@ module.exports = function(grunt) {
 
 			// Something went horribly wrong
 			grunt.verbose.or.writeln();
-			grunt.log.write('Running imgo...').error();
 			if (code === 127) {
-				grunt.log.errorlns(
-					'Please install imgo: https://github.com/imgo/imgo'
-				);
+				grunt.log.errorlns('Please install imgo: https://github.com/imgo/imgo');
 				grunt.warn('imgo not found', options.code);
 			}
 			else {
