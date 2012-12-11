@@ -32,8 +32,10 @@ module.exports = function(grunt) {
 					if (!data.err) {
 						if (data.compressed) {
 							if (!nl) grunt.log.writeln();
-							grunt.log.writeln("File '" + file + "': saved " + String(data.saved).green + " bytes " +
-									"(" + String(Math.round(data.saved/data.before*100)).green + "%".green + ")");
+							grunt.log.writeln(
+								"File '" + file + "': saved " + String(data.saved).green + " bytes " +
+								"(" + (data.percent+"%").green + ")"
+							);
 							nl = true;
 						}
 						else {
@@ -65,11 +67,11 @@ module.exports = function(grunt) {
 			if (!err) {
 				var afterBytes = fs.statSync(file).size;
 				if (afterBytes < beforeBytes) {
+					var saved = beforeBytes - afterBytes;
 					return options.done({
 						compressed: true,
-						before: beforeBytes,
-						after: beforeBytes,
-						saved: beforeBytes - afterBytes
+						saved: saved,
+						percent: Math.round(saved/beforeBytes*100)
 					});
 				}
 				else {
