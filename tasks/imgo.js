@@ -10,10 +10,9 @@ module.exports = function(grunt) {
 	'use strict';
 
 	var fs = require('fs');
-	var util = grunt.util || grunt.utils;  // Grunt 0.3/0.4 compatibility
 
 	grunt.registerMultiTask('imgo', 'Optimize images using imgo', function() {
-		this.requiresConfig([ this.name, this.target, 'files' ].join('.'));
+		this.requiresConfig([ this.name, this.target, 'src' ].join('.'));
 
 		var done = this.async();
 		var params = this.data;
@@ -23,8 +22,7 @@ module.exports = function(grunt) {
 			return done();
 		}
 
-		var files = grunt.file.expandFiles(params.files);
-		util.async.forEach(files, function(file, nextFile) {
+		grunt.util.async.forEach(this.filesSrc, function(file, nextFile) {
 			optimize({
 				file: file,
 				args: params.options,
@@ -60,7 +58,7 @@ module.exports = function(grunt) {
 		if (options.args) {
 			args.unshift(options.args);
 		}
-		return util.spawn({
+		return grunt.util.spawn({
 			cmd: 'imgo',
 			args: args
 		}, function(err, result, code) {

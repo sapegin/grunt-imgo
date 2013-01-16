@@ -2,26 +2,24 @@
 
 ## Overview
 
-Install [imgo](https://github.com/imgo/imgo/blob/master/README.md) following instructions below.
+Install [imgo](https://github.com/imgo/imgo/blob/master/README.md) (see *How to install imgo on OS X* below for instructions).
 
-Install `grunt-imgo`:
+For Grunt 0.4: `npm install sapegin/grunt-imgo --save-dev`
 
-```
-npm install grunt-imgo
-```
+For Grunt 0.3: `npm install grunt-imgo@0.0.6 --save-dev`
 
-Add somewhere in your `grunt.js`:
+Add to your `Gruntfile.js`:
 
 ```javascript
 grunt.loadNpmTasks('grunt-imgo');
 ```
 
-Inside your `grunt.js` file add a section named `imgo`. See Parameters section below for details.
+Then add section named `imgo` inside `grunt.initConfig()`. See next section for details.
 
 
 ### Parameters
 
-#### files `string|array`
+#### src `string|array`
 
 Images list: PNG, GIF or JPEG. String or array. Wildcards are supported.
 
@@ -38,17 +36,23 @@ skip: require('os').platform() === 'win32'
 ```
 
 
-### Config Example
+### Gruntfile Example
 
 ``` javascript
-imgo: {
-  icons: {
-    files: 'icons/*.png'
-  }
-}
+module.exports = function(grunt) {
+	grunt.initConfig({
+		imgo: {
+		  icons: {
+		    src: 'icons/*.png'
+		  }
+		}
+	});
+	grunt.loadNpmTasks('grunt-imgo');
+	grunt.registerTask('default', ['imgo']);
+};
 ```
 
-### How to install `imgo` on Mac OS X
+### How to install `imgo` on OS X
 
 [Install](https://github.com/mxcl/homebrew/wiki/Installation) Homebrew.
 
@@ -65,6 +69,11 @@ done
 ```
 
 You may need to use `sudo` for `brew`, depending on your setup.
+
+
+## Release History
+
+* 2013-01-?    v0.1.0   Updating to work with Grunt v0.4.0rc5. file option renamed to src. Grunt 0.3 support dropped.
 
 
 ---

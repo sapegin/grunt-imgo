@@ -1,7 +1,7 @@
 {
   "name": "grunt-imgo",
   "description": "Image optimization for Grunt using imgo.",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "homepage": "https://github.com/sapegin/grunt-imgo",
   "author": {
     "name": "Artem Sapegin",
@@ -26,12 +26,17 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "grunt": "*"
+    "grunt": "~0.4.0rc5",
+    "grunt-contrib-jshint": "~0.1.1rc5",
+    "grunt-contrib-nodeunit": "~0.1.2rc5",
+    "grunt-contrib-clean": "~0.4.0rc5"
   },
   "keywords": [
     "gruntplugin",
     "imgo",
+    "image",
     "images",
+    "optimisation",
     "optimization"
   ]
 }

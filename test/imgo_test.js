@@ -5,7 +5,7 @@ exports.imgo = {
 	compile: function(test) {
 		'use strict';
 
-		var files = grunt.file.expand('test/src/**');
+		var files = grunt.file.expand('test/src/**/*');
 
 		test.expect(files.length);
 
