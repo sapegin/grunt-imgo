@@ -73,7 +73,7 @@ You may need to use `sudo` for `brew`, depending on your setup.
 
 ## Release History
 
-## 2013-02-18 v0.1.0
+### 2013-02-18 v0.1.0
 
 * Grunt 0.4 support.
 * file option renamed to src.
