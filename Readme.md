@@ -23,6 +23,10 @@ Then add section named `imgo` inside `grunt.initConfig()`. See next section for 
 
 Images list: PNG, GIF or JPEG. String or array. Wildcards are supported.
 
+#### dest `string`
+
+Destination path for copying images before optimizing.
+
 #### options `string`
 
 Any options you want to pass to `imgo`.
