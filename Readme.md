@@ -23,6 +23,17 @@ Then add section named `imgo` inside `grunt.initConfig()`. See next section for 
 
 Images list: PNG, GIF or JPEG. String or array. Wildcards are supported.
 
+#### dest `string`
+
+Destination path for images copying before optimizing.
+
+``` javascript
+icons: {
+  src: 'static/dev/img/*.*',
+  dest: 'static/build/img/'
+}
+```
+
 #### options `string`
 
 Any options you want to pass to `imgo`.
