@@ -27,6 +27,23 @@ Images list: PNG, GIF or JPEG. String or array. Wildcards are supported.
 
 Destination path for copying images before optimizing.
 
+``` javascript
+module.exports = function(grunt) {
+	grunt.initConfig({
+		imgo: {
+		  icons: {
+		    icons: {
+			  src: 'static/dev/img/*.*',
+			  dest: 'static/build/img/'
+			}
+		  }
+		}
+	});
+	grunt.loadNpmTasks('grunt-imgo');
+	grunt.registerTask('default', ['imgo']);
+};
+```
+
 #### options `string`
 
 Any options you want to pass to `imgo`.
