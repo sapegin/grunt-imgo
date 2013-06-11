@@ -27,11 +27,7 @@ module.exports = function(grunt) {
 			
 			if(params.dest)
 			{
-				if(!grunt.util._.endsWith(params.dest, '/'))
-				{
-					params.dest += '/';
-				}
-				var newFile = params.dest + path.basename(file);
+				var newFile = path.join(params.dest, path.basename(file));
 				grunt.file.copy(file, newFile);
 				file = newFile;
 			}
