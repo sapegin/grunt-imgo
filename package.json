@@ -1,7 +1,7 @@
 {
   "name": "grunt-imgo",
   "description": "Image optimization for Grunt using imgo.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/sapegin/grunt-imgo",
   "author": {
     "name": "Artem Sapegin",
