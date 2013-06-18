@@ -62,10 +62,12 @@ module.exports = function(grunt) {
 		var file = options.file;
 		var beforeBytes = fs.statSync(file).size;
 
-		var args = [file];
+		var args = [];
 		if (options.args) {
-			args.unshift(options.args);
+			args = args.concat(options.args.split(' '));
 		}
+		args.push(file);
+
 		return grunt.util.spawn({
 			cmd: 'imgo',
 			args: args

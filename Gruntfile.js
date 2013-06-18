@@ -17,6 +17,10 @@ module.exports = function(grunt) {
 			},
 			test2: {
 				src: ['test/tmp/**/*']
+			},
+			opts: {
+				options: '-m -b',
+				src: ['test/tmp/**/*']
 			}
 		},
 		nodeunit: {
@@ -37,6 +41,6 @@ module.exports = function(grunt) {
 	});
 
 	grunt.registerTask('default', ['jshint', 'clean', 'prepare', 'imgo:test1', 'nodeunit', 'clean',
-		'prepare', 'imgo:test2', 'nodeunit', 'clean']);
+		'prepare', 'imgo:test2', 'nodeunit', 'clean', 'prepare', 'imgo:opts', 'nodeunit', 'clean']);
 
 };

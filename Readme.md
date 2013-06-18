@@ -29,14 +29,21 @@ Destination path for images copying before optimizing.
 
 ``` javascript
 icons: {
-  src: 'static/dev/img/*.*',
-  dest: 'static/build/img/'
+	src: 'static/dev/img/*.*',
+	dest: 'static/build/img/'
 }
 ```
 
 #### options `string`
 
 Any options you want to pass to `imgo`.
+
+``` javascript
+icons: {
+	src: 'icons/*.png',
+	options: '-m -b'
+}
+```
 
 #### skip `boolean`
 
@@ -53,9 +60,9 @@ skip: require('os').platform() === 'win32'
 module.exports = function(grunt) {
 	grunt.initConfig({
 		imgo: {
-		  icons: {
-		    src: 'icons/*.png'
-		  }
+			icons: {
+				src: 'icons/*.png'
+			}
 		}
 	});
 	grunt.loadNpmTasks('grunt-imgo');
