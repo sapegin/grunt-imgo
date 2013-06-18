@@ -91,6 +91,12 @@ You may need to use `sudo` for `brew`, depending on your setup.
 
 ## Release History
 
+### 2013-06-18 v0.1.1
+
+* `dest` option (by [@smolnikov](https://github.com/smolnikov)).
+* Fix `options`: cannot parse several keys.
+* Verbose output of `imgo` command.
+
 ### 2013-02-18 v0.1.0
 
 * Grunt 0.4 support.
