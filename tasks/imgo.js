@@ -68,6 +68,7 @@ module.exports = function(grunt) {
 		}
 		args.push(file);
 
+		grunt.verbose.writeln('Run imgo: ' + ('imgo ' + args.join(' ')).cyan);
 		return grunt.util.spawn({
 			cmd: 'imgo',
 			args: args
